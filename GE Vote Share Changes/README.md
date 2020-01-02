@@ -1,4 +1,4 @@
-**Purpose**
+**Notes**
 
 The purpose is to use R to show how the declared aggregate vote share changes progressed throughout election night.
 It may be informative to social researchers.
