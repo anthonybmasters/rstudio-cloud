@@ -66,7 +66,7 @@ GB_change_gg <- GB_change_df %>%
   geom_step(aes(color = Party), size = 1.2) +
   ylim(c(-15, 15)) +
   scale_color_manual(values = gb_party_colours) +
-  labs(title = "Votes share changes for the main parties settled after about 4am on election night",
+  labs(title = "Votes share changes for the main parties settled after about 4am",
        subtitle = "Cumulative aggregate GB vote share changes between 2017 and 2019, in percentage points, by declaration time.",
        caption = "Source: Author's calculations, based on House of Commons Library CBP-8749 and CBP-7979.",
        x = "Declaration Time (on 12-13th December 2019)",
