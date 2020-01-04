@@ -1,5 +1,5 @@
 ## Purpose
-The purpose of this golder is host all files relating to First-class degrees from Higher Education Statistics Authority data.
+The purpose of this folder is host all files relating to First-class degrees from Higher Education Statistics Authority data.
 
 ## Data Sources
 The four HESA data files may be drawn from here:
