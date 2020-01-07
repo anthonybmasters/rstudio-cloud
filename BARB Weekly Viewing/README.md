@@ -6,3 +6,7 @@ The Broadcasters' Audience Research Board (BARB) estimates are available from th
 https://www.barb.co.uk/viewing-data/weekly-viewing-summary/
 
 **Note:** these estimates come from surveys, and are subject to multiple sources of potential error.
+
+## R Markdown
+An R Markdown document, with graphs, is available to view:
+http://rpubs.com/anthonybmasters/barb-weekly-viewing
