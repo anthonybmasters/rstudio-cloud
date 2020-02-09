@@ -17,11 +17,11 @@ theme_clean <- theme_bw(base_family="Calibri") +
 theme_set(theme_clean)
 
 #Import the data
-vote_eng_df <- read_excel("GE Vote Shares 1918 to 2019/UK General Election Vote Shares (1918 - 2019) - 2019-12-29.xlsx",
+vote_eng_df <- read_excel("UK General Election Vote Shares (1918 - 2019) - 2019-12-29.xlsx",
                           sheet = "DATA-Eng")
-vote_scot_df <- read_excel("GE Vote Shares 1918 to 2019/UK General Election Vote Shares (1918 - 2019) - 2019-12-29.xlsx",
+vote_scot_df <- read_excel("UK General Election Vote Shares (1918 - 2019) - 2019-12-29.xlsx",
                             sheet = "DATA-Scot")
-vote_wales_df <- read_excel("GE Vote Shares 1918 to 2019/UK General Election Vote Shares (1918 - 2019) - 2019-12-29.xlsx",
+vote_wales_df <- read_excel("UK General Election Vote Shares (1918 - 2019) - 2019-12-29.xlsx",
                             sheet = "DATA-Wales")
 
 #Tidy the data. Scot and Wales vote counts are in thousands
