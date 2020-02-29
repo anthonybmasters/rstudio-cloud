@@ -28,7 +28,8 @@ dice_tidy_df <- dice_roll_df %>%
                names_to = "Type",
                values_to = "Value")
 
-cor(dice_roll_df$c_result, dice_roll_df$model)
+c_model = lm(c_result ~ model, data = dice_roll_df)
+summary(c_model)$r.squared
 
 ## Create graphs
 dice_roll_gg <- dice_roll_df %>% ggplot(aes(x = nr, y = factor(result))) +
