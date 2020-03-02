@@ -20,8 +20,10 @@ theme_clean <- theme_bw(base_family="Calibri") +
 theme_set(theme_clean)
 
 ## Create table
+q <- qnorm(0.975)
 dice_roll_df <- roll_dice(times = 100, seed = 1210) %>%
-  mutate(c_result = cumsum(result), model = 3.5*nr)
+  mutate(c_result = cumsum(result),
+         model = 3.5*nr)
 dice_tidy_df <- dice_roll_df %>%
   select(nr, c_result, model) %>%
   pivot_longer(cols = 2:3,
@@ -45,18 +47,24 @@ dice_roll_gg <- dice_roll_df %>% ggplot(aes(x = nr, y = factor(result))) +
 dice_model_gg <- dice_tidy_df %>%
   ggplot(aes(x = nr, y = Value, group = Type)) +
   geom_line(aes(colour = Type, linetype = Type), size = 1.2) +
-  labs(title = "Summing dice roll results is close to expectation.",
-       subtitle = "Cumulative sums of dice rolls, compared to modelled values (3.5 times total rolls).",
+  geom_ribbon(aes(ymin = floor(map2_dbl(3.5*nr - q*sqrt(nr*35/12), nr, max)),
+                  ymax = ceiling(map2_dbl(3.5*nr + q*sqrt(nr*35/12), 6*nr, min))),
+              alpha = 0.1) + 
+  labs(title = "Summed dice roll results are close to expectation.",
+       subtitle = "Cumulative sums of dice rolls and modelled values. Shaded between 2.5th and 97.5th percentiles.",
        x = "Number of Rolls",
        y = "",
-       caption = "Source: tidydice package, with seed set to 1210.") 
+       caption = "Source: tidydice package (seed: 1210), with the model equal to 3.5 times the number of rolls.")
 
 dice_model_gif <- dice_tidy_df %>%
   ggplot(aes(x = nr, y = Value, group = Type)) +
   geom_line(aes(colour = Type, linetype = Type), size = 1.2) +
   geom_point(aes(colour = Type), size = 1.4) +
-  labs(title = "Summing dice roll results is close to expectation.",
-       subtitle = "Cumulative sums of dice rolls, compared to modelled values.",
+  geom_ribbon(aes(ymin = floor(map2_dbl(3.5*nr - q*sqrt(nr*35/12), nr, max)),
+                  ymax = ceiling(map2_dbl(3.5*nr + q*sqrt(nr*35/12), 6*nr, min))),
+              alpha = 0.1) + 
+  labs(title = "Summed dice roll results are close to expectation.",
+       subtitle = "Cumulative sums of dice rolls and modelled values. Shaded between 2.5th and 97.5th percentiles.",
        x = "Number of Rolls",
        y = "",
        caption = "Source: tidydice package (seed: 1210), with the model equal to 3.5 times the number of rolls.") +
