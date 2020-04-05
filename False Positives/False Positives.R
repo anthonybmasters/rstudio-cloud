@@ -36,7 +36,8 @@ plot_pictogram <- function(test_df, plot_title, plot_subtitle){
                           values = c("asterisk", "user", "user", "asterisk")) +
     theme_enhance_waffle() +
     labs(title = plot_title,
-         subtitle = plot_subtitle)
+         subtitle = plot_subtitle,
+         caption = "This is an illustrative example of 100 people. Actual numbers of false results will vary.")
   return(test_gg)
 }
 
