@@ -127,7 +127,7 @@ ge2017_labpoint_gg <- ge2017_tidy_df %>%
                right = FALSE) +
   scale_fill_manual(values = c("#0087DC", "#6AB023", "#008142", "#FDF38E")) +
   scale_y_continuous(NULL, breaks = NULL) +
-  labs(title = "In 2017: seven Conservative-held seats with Labour in second had a majority of less than 0.64 points.",
+  labs(title = "In 2017: six Conservative-held seats with Labour in second had a majority of less than 0.75 points.",
        subtitle = "Dot histogram of General Election 2017 constituency majorities [pp], in Great British seats with the Conservatives in second place. Binwidths equal to 1.0 point.",
        caption = "Data: House of Commons Library CBP-7979.",
        x = "Constituency Majority (percentage point)")
