@@ -75,7 +75,7 @@ death_time_gg <- death_regs_time_df %>%
                    expand = c(0,0)) +
   scale_y_continuous(limits = c(0, 18000),
                      expand = c(0,0)) +
-  labs(title = "There is a seasonal trend in death registrations in England and Wales",
+  labs(title = "There is a seasonal cycle in death registrations in England and Wales",
        subtitle = "Weekly death registrations in age groups. These statistics are by registration date, for England and Wales.",
        caption = "Data: ONS: Deaths registered weekly in England and Wales, 2010 to 2019.",
        x = "Registration Week Number",
