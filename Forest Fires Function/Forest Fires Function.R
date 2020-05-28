@@ -74,7 +74,7 @@ forest_fire_sim <- function(simulations = 100,
     
     # Fires could start at a random tree or in the centre
     if(fixed_start){
-      V(G)$color[round(forest_length^2/2)-(forest_length/2) ] <- "red" }
+      V(G)$color[round(forest_length^2/2 + 1/2)] <- "red" }
     else{
       V(G)$color[sample(forest_length^2, 1)] <- "red" }
     
@@ -91,7 +91,7 @@ forest_fire_sim <- function(simulations = 100,
       V(G)$color[trees_on_fire[runif(length(trees_on_fire), 0, 1) <= burn_probability]] <- "black"
       
       # Set green neighbour trees of burning trees on fire with fire_probability
-      ignited <-  V(G)$color == "red"
+      ignited <- V(G)$color == "red"
       possible_fires <- adjacent_vertices(G, ignited, mode = "total")
       
       # The check is for unique vertices
@@ -132,7 +132,7 @@ forest_fire_sim <- function(simulations = 100,
 
 ## For testing
 set.seed(6347)
-forest_fire_sim(fire_probability = 0.5,
+forest_fire_sim(fire_probability = 0.6,
                 burn_probability = 0.1,
                 time_steps = 15,
                 simulations = 10)
