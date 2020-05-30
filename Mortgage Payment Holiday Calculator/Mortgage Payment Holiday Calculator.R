@@ -92,3 +92,30 @@ mortgage_holiday <- function(loan_value, term_month, int_rate,
       df$tot_int_current[i] = df$tot_int_current[i-1] + df$interest_current[i]  
    }
    return(df)}
+
+plot_payment_holiday <- function(mortgage_holiday_df){
+   y_upper <- max(mortgage_holiday_df$repayment_current,
+                  mortgage_holiday_df$repayment_holiday) %>%
+      signif(digits = 2) + 500
+   mortgage_holiday_df %>%
+      select("month", "repayment_holiday", "repayment_current") %>%
+      rename("Payment Holiday" = "repayment_holiday",
+             "Current" = "repayment_current") %>%
+      pivot_longer(cols = 2:3,
+                   names_to = "Type",
+                   values_to = "Payments") %>%
+      filter(month >= 1) %>%
+      ggplot(aes(x = month,
+                 y = Payments,
+                 group = Type)) +
+      geom_step(aes(color = Type),
+                size = 1.5) +
+      scale_x_continuous(expand = c(0, 0)) +
+      scale_y_continuous(expand = c(0, 0),
+                         limits = c(0, y_upper)) +
+      labs(title = "There are higher repayments after the mortgage payment holiday.",
+           subtitle = "Monthly mortgage repayments [£], assuming a mortgage payment holiday.",
+           caption = "Author's calculations. Based on user inputs.",
+           x = "Month",
+           y = "")
+}

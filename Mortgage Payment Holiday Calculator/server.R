@@ -38,8 +38,7 @@ function(input, output, session){
   paym_diff <- reactive({paym_after() - paym_before()})
   tot_int_diff <- reactive({mortgage_table()$tot_int_holiday[values$term_month+1] - mortgage_table()$tot_int_current[values$term_month+1]})
   
-  #Our key outputs are then shown
-  
+  #Our outputs are then shown
   
   output$monthly_payment_before <- renderValueBox({
     valueBox(
@@ -67,4 +66,22 @@ function(input, output, session){
       value = tot_int_diff() %>% pound(),
       subtitle = "Difference in total interest paid",
       color = "purple")
-  })}
+  })
+  
+  output$monthly_repayment_graph <- renderPlot({
+    mortgage_table() %>%
+      plot_payment_holiday()
+  })
+  
+  output$downloadCsv <- downloadHandler(
+    filename = "mortgage_table.csv",
+    content = function(file) {
+      write.csv(mortgage_table(), file)
+    },
+    contentType = "text/csv"
+  )
+  
+  output$monthly_repayment_table <- renderDataTable({
+    mortgage_table()
+  })
+  }
