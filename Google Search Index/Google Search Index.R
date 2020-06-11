@@ -16,13 +16,14 @@ theme_clean <- theme_bw(base_family="Calibri") +
 theme_set(theme_clean)
 
 ## Import and tidy data
-Google_Search_Index_df <- read_excel(path = "Google Search Index - 2020-06-11.xlsx", 
+Google_Search_Index_df <- read_excel(path = "Google Search Index/Google Search Index - 2020-06-11.xlsx", 
                                      sheet = "DATA",
                                      col_types = c("date", "numeric", "numeric", "numeric"))
+
 google_search_1_df <- Google_Search_Index_df %>%
   select(1:3) %>%
-  rename("Cream tea" = "Cream tea delivery (relative)",
-         "McDonald's" = "McDonalds delivery") %>%
+  rename("Cream tea delivery" = "Cream tea delivery (relative)",
+         "McDonald's delivery" = "McDonalds delivery") %>%
   pivot_longer(cols = 2:3,
                names_to = "Term",
                values_to = "Index",
@@ -30,12 +31,13 @@ google_search_1_df <- Google_Search_Index_df %>%
 
 google_search_2_df <- Google_Search_Index_df %>%
   select(1, 3, 4) %>%
-  rename("McDonald's" = "McDonalds delivery",
-         "Cream tea" = "Cream tea delivery") %>%
+  rename("McDonald's delivery" = "McDonalds delivery") %>%
   pivot_longer(cols = 2:3,
                names_to = "Term",
                values_to = "Index",
                values_drop_na = TRUE)
+
+lockdown_date <- as.POSIXct(as.Date("2020-03-23"))
 
 ## Making graphs
 google_search_1_gg <- ggplot(data = google_search_1_df,
@@ -43,6 +45,8 @@ google_search_1_gg <- ggplot(data = google_search_1_df,
                                  y = Index,
                                  group = Term)) +
   geom_line(aes(color = Term), size = 1.5) +
+  geom_vline(xintercept = lockdown_date,
+             linetype = "dashed") +
   scale_x_datetime(date_labels = "%d-%b-%Y",
                    expand = c(0,0)) +
   scale_y_continuous(limits = c(0, 100),
@@ -51,7 +55,10 @@ google_search_1_gg <- ggplot(data = google_search_1_df,
        subtitle = "Rounded index of UK Google 'delivery' search volumes. 100 is the 'McDonald's delivery' volume on 3rd June 2020.",
        caption = "Data: Google Trends (United Kingdom).",
        x = "Date",
-       y = "")
+       y = "") +
+  annotate('text', x = lockdown_date, y = 75,
+           label = "UK enters lockdown",
+           size = 5, hjust = -0.05)
 
 google_search_2_gg <- ggplot(data = google_search_2_df,
                              aes(x = Day,
