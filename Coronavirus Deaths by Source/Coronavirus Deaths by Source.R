@@ -23,6 +23,10 @@ ph_ons_deaths_df <- read_excel("Coronavirus Deaths by Source/PHE and ONS Compari
                values_to = "new_deaths",
                values_drop_na = TRUE)
 
+ph_ons_deaths_df %>%
+  group_by(area_name, data_source) %>%
+  summarise(sum = sum(new_deaths))
+
 ## Make the graphs
 phe_ons_england_gg <- ph_ons_deaths_df %>%
   filter(area_name == "England") %>%
