@@ -8,5 +8,6 @@ Headline vote intentions were drawn from two places:
 - BPC member company archives: http://www.britishpollingcouncil.org/officers-members/
 
 ## R Markdown
-There is an R Markdown page to view:
-- R Markdown: https://rpubs.com/anthonybmasters/house-effects
+There are two R Markdown pages to view:
+- R Markdown I: https://rpubs.com/anthonybmasters/house-effects
+- R Markdown II (Table): https://rpubs.com/anthonybmasters/house-effects-table
