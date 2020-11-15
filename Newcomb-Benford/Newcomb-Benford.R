@@ -52,7 +52,7 @@ chicago_nb_df <- chicago_2020_df %>%
          nb_dist = 100*log10(1 + 1/first_digit))
 
 ## Make graphs
-chicago_graph_caption <- "Author's calculations. Data: Chicago Board of Election Commissioners, 2020 US Presidential Election Results."
+chicago_graph_caption <- "Data: Chicago Board of Election Commissioners, 2020 US Presidential Election Results."
 
 chicago_votebin_gg <- chicago_2020_df %>%
   ggplot(aes(x = valid_votes,
