@@ -15,3 +15,7 @@ There is an graph of estimated COVID-19 incidence in England in most weekly repo
 ## ONS Methods Note
 There is a methods note for the ONS COVID-19 Infection Survey, which describes the University of Oxford modelling:
 - ONS: https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/methodologies/covid19infectionsurveypilotmethodsandfurtherinformation#modelling
+
+## R Markdown
+There is an R Markdown page to view:
+- R Markdown: https://rpubs.com/anthonybmasters/ons-covid-19-model-estimates
